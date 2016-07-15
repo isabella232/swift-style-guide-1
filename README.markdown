@@ -45,6 +45,8 @@ Our overarching goals are clarity, consistency and brevity, in that order.
 * [Semicolons](#semicolons)
 * [Parentheses](#parentheses)
 * [Organization and Bundle Identifier](#organization-and-bundle-identifier)
+* [UIKit](#uikit)
+  * [Subview Creation](#subview-creation)
 * [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
 * [References](#references)
@@ -900,6 +902,38 @@ Where an Xcode project is involved, the organization should be set to `Ray Wende
 
   ![Xcode Project settings](screens/project_settings.png)
   
+## UIKit
+
+### Subview Creation
+
+View properties of UIViews or UIViewControllers should be declared using the 
+`lazy var` pattern to consolidate initialization and configuration logic.
+
+**Preferred**
+```swift
+lazy var subtitleLabel: UILabel = {
+  let label = UILabel()
+  // Set textColor, font, etc.
+  return label
+}
+
+// later
+view.addSubview(subtitleLabel)
+```
+
+**Not Preferred**
+```swift
+viewDidLoad() {
+  label1 = UILabel()
+  // config here
+  label2 = UILabel()
+  // more config
+  label3 = UILabel()
+  // more config
+}
+```
+
+
 ## Copyright Statement
 
 The following copyright statement should be included at the top of every source

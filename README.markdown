@@ -639,6 +639,34 @@ let centerPoint = CGPointMake(96, 42)
 Prefer the struct-scope constants `CGRect.infinite`, `CGRect.null`, etc. over global constants `CGRectInfinite`, `CGRectNull`, etc. For existing variables, you can use the shorter `.zero`.
 
 
+### Property Initialization
+
+For properties created during initialization, it is preferred to initialize them where they are declared, rather than in `init`. This streamlines the `init` and creates a clear block of setup code for each property. For properties that can be set up in one line, use simple assignment. For multi-line setup, use a closure.
+
+**Preferred:**
+```swift
+    let imageView = UIImageView(image: UIImage(named:"Checkbox"))
+    let textLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = UIFont.systemFontOfSize(16.0)
+        return label
+    }()
+```
+
+**Not Preferred:**
+```swift
+let imageView: UIImageView
+let textLabel: UILabel
+
+init() {
+  self.imageView = UIImageView(image: UIImage(named:"Checkbox"))
+  self.label = UILabel()
+  self.label.numberOfLines = 0
+  self.label.font = .font = UIFont.systemFontOfSize(16.0)
+}
+```
+
 ### Lazy Initialization
 
 Consider using lazy initialization for finer grain control over object lifetime. This is especially true for `UIViewController` that loads views lazily. You can either use a closure that is immediately called `{ }()` or call a private factory method. Example:
@@ -943,7 +971,7 @@ if (name == "Hello") {
 
 ### Subview Creation
 
-View properties of UIViews or UIViewControllers should be declared using the 
+View properties of UIViewControllers should be declared using the 
 `lazy var` pattern to consolidate initialization and configuration logic.
 
 **Preferred**

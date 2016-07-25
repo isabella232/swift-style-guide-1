@@ -48,6 +48,7 @@ Writing Objective-C? Check out our [Objective-C Style Guide](https://github.com/
 * [Semicolons](#semicolons)
 * [Parentheses](#parentheses)
 * [UIKit](#uikit)
+  * [Localization](#localization)
   * [Subview Creation](#subview-creation)
 * [Copyright Statement](#copyright-statement)
 * [Smiley Face](#smiley-face)
@@ -968,6 +969,24 @@ if (name == "Hello") {
 ```
 
 ## UIKit
+
+### Localization
+
+Any user-facing string should be initialized as a `NSLocalizedString` with
+comments to aid with translation. A comment should be provided if the text 
+contains links or format strings (it is acceptable to not provide a comment
+otherwise if the purpose of the string is not ambiguous).
+
+**Preferred:**
+```swift
+button.setTitle(NSLocalizedString("Log out", comment: "'Log out' button title"), forState: .Normal)
+```
+
+**Not Preferred:**
+```swift
+button.setTitle("Log out", forState: .Normal)
+```
+
 
 ### Subview Creation
 

@@ -104,7 +104,18 @@ For the above example using `UIGestureRecognizer`, 1 is unambiguous and preferre
 
 ### Enumerations
 
-Avoid switching on optional values; use 'guard' to unwrap the value first.
+Following Apple's API Design Guidelines for Swift 3, use lowerCamelCase for enumeration values.
+
+```swift
+enum Shape {
+  case rectangle
+  case square
+  case rightTriangle
+  case equilateralTriangle
+}
+```
+
+Avoid `switch`ing on optional values; use `guard` to unwrap the value first.
 
 **Preferred**
 ```swift

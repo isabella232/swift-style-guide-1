@@ -138,7 +138,7 @@ enum Shape {
 }
 ```
 
-Avoid switching on optional values; use 'guard' to unwrap the value first.
+Avoid `switch`ing on optional values; use `guard` to unwrap the value first.
 
 **Preferred**
 ```swift

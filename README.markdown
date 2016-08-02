@@ -10,6 +10,7 @@ Our overarching goals are clarity, consistency and brevity, in that order.
 * [Correctness](#correctness)
 * [Naming](#naming)
   * [Prose](#prose)
+  * [Enumerations](#enumerations)
   * [Delegates](#delegates)
   * [Use Type Inferred Context](#use-type-inferred-context)  
   * [Generics](#generics)
@@ -101,6 +102,30 @@ For the above example using `UIGestureRecognizer`, 1 is unambiguous and preferre
 
 ![Methods in Xcode jump bar](screens/xcode-jump-bar.png)
 
+### Enumerations
+
+Avoid switching on optional values; use 'guard' to unwrap the value first.
+
+**Preferred**
+```swift
+guard let fruit = fruit else {
+    print("There is no fruit")
+    return
+}
+switch fruit {
+case .Apple: print("It's an apple")
+case .Orange: print("It's an orange")
+}
+```
+
+**Not Preferred**
+```swift
+switch fruit {
+case .Apple?: print("It's an apple")
+case .Orange?: print("It's an orange")
+case nil: print("There is no fruit")
+}
+```
 
 ### Class Prefixes
 

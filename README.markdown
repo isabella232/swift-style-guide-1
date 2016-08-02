@@ -138,6 +138,29 @@ enum Shape {
 }
 ```
 
+Avoid `switch`ing on optional values; use `guard` to unwrap the value first.
+
+**Preferred**
+```swift
+guard let fruit = fruit else {
+    print("There is no fruit")
+    return
+}
+switch fruit {
+case .Apple: print("It's an apple")
+case .Orange: print("It's an orange")
+}
+```
+
+**Not Preferred**
+```swift
+switch fruit {
+case .Apple?: print("It's an apple")
+case .Orange?: print("It's an orange")
+case nil: print("There is no fruit")
+}
+```
+
 ### Prose
 
 When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective or `_` for unnamed parameters. Examples:

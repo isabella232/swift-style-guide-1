@@ -693,8 +693,9 @@ init() {
 
 ### Lazy Initialization
 
-Consider using lazy initialization for finer grain control over object lifetime. This is especially true for `UIViewController` that loads views lazily. You can either use a closure that is immediately called `{ }()` or call a private factory method. Example:
+Consider using lazy initialization for finer grain control over object lifetime, but [avoid closures as it results in slower compilation times](https://bugs.swift.org/browse/SR-1277).
 
+**Preferred:**
 ```swift
 lazy var locationManager: CLLocationManager = self.makeLocationManager()
 
@@ -705,6 +706,17 @@ private func makeLocationManager() -> CLLocationManager {
   manager.requestAlwaysAuthorization()
   return manager
 }
+```
+
+**Not Preferred:**
+```swift
+lazy var locationManager: CLLocationManager = {
+  let manager = CLLocationManager()
+  manager.desiredAccuracy = kCLLocationAccuracyBest
+  manager.delegate = self
+  manager.requestAlwaysAuthorization()
+  return manager
+}()
 ```
 
 **Notes:**

@@ -722,6 +722,7 @@ lazy var locationManager: CLLocationManager = {
 **Notes:**
   - `[unowned self]` is not required here. A retain cycle is not created.
   - Location manager has a side-effect for popping up UI to ask the user for permission so fine grain control makes sense here.
+  - Swift 3 fixes compilation issues related to lazy var initialization with closures.
 
 
 ### Type Inference

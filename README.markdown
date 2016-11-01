@@ -636,6 +636,26 @@ if let textContainer = self.textContainer {
 }
 ```
 
+While it is fine to split an `if let` into multiple lines when several variables are present, the first variable should be delcared on the same line as the if:
+
+**Preferred:**
+```swift
+if let subview = subview,
+   volume = volume {
+  // do something with unwrapped subview and volume
+}
+```
+
+**Not Preferred:**
+```swift
+if 
+  let unwrappedSubview = optionalSubview,
+  realVolume = volume {
+    // do something with unwrappedSubview and realVolume
+  }
+}
+```
+
 When naming optional variables and properties, avoid naming them like `optionalString` or `maybeView` since their optional-ness is already in the type declaration.
 
 For optional binding, shadow the original name when appropriate rather than using names like `unwrappedView` or `actualLabel`.

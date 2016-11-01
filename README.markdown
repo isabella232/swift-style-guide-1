@@ -369,6 +369,17 @@ Avoid block comments inline with code, as the code should be as self-documenting
 
 Files should not include attribution headers.
 
+**Not Preferred:**
+```swift
+//
+//  NotificationViewController.swift
+//  BlueApron
+//
+//  Created by Rob Lester on 11/23/15.
+//  Copyright © 2015 Blue Apron. All rights reserved.
+//
+```
+
 ## Classes and Structures
 
 ### Which one to use?

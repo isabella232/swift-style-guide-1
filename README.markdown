@@ -367,7 +367,7 @@ When they are needed, use comments to explain **why** a particular piece of code
 
 Avoid block comments inline with code, as the code should be as self-documenting as possible. *Exception: This does not apply to those comments used to generate documentation.*
 
-Files should not include attribution headers.
+Files should not include the default Xcode attribution header:
 
 **Not Preferred:**
 ```swift

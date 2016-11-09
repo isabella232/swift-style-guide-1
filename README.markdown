@@ -283,9 +283,11 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
   return Database.contacts.count
 }
 ```
-### Minimal Imports
+### Imports
 
 Keep imports minimal. For example, don't import `UIKit` when importing `Foundation` will suffice.
+
+Imports should be alphabetized. In files with a large number of imports, this makes them easier to scan.
 
 ## Spacing
 

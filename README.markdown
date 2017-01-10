@@ -202,6 +202,16 @@ func write<target: OutputStream>(to target: inout target)
 func swap<Thing>(_ a: inout Thing, _ b: inout Thing)
 ```
 
+### Class Prefixes
+
+Swift types are automatically namespaced by the module that contains them and you should not add a class prefix such as RW. If two names from different modules collide you can disambiguate by prefixing the type name with the module name. However, only specify the module name when there is possibility for confusion which should be rare.
+
+```swift
+import SomeModule
+
+let myClass = MyModule.UsefulClass()
+```
+
 ### Language
 
 Use US English spelling to match Apple's API.

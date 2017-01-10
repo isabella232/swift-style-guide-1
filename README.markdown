@@ -124,16 +124,16 @@ guard let fruit = fruit else {
     return
 }
 switch fruit {
-case .Apple: print("It's an apple")
-case .Orange: print("It's an orange")
+case .apple: print("It's an apple")
+case .orange: print("It's an orange")
 }
 ```
 
 **Not Preferred**
 ```swift
 switch fruit {
-case .Apple?: print("It's an apple")
-case .Orange?: print("It's an orange")
+case .apple?: print("It's an apple")
+case .orange?: print("It's an orange")
 case nil: print("There is no fruit")
 }
 ```
